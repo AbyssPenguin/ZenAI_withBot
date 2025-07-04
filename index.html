@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZenAI - Your empathetic AI companion for stress management and emotional well-being">
-    <title>ZenAI - Your Mindful Companion</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Google Fonts: Quicksand for headings, Inter for body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenAI – Mindful Journaling Companion</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Botpress Webchat Scripts (Auto Embed) -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/03/17/20250703173453-822WBGRY.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ZenAI</h1>
-            <p class="tagline">Your mindful companion for emotional well-being</p>
-        </header>
+  <div class="zen-container">
+    <header>
+      <h1>ZenAI</h1>
+      <p class="subtitle">Your mindful companion for emotional well-being</p>
+    </header>
 
-        <main>
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    <!-- Messages will be inserted here by JavaScript -->
-                    <div class="message ai-message">
-                        <p>Hello! I'm ZenAI, your mindful companion. How are you feeling today? 🌸</p>
-                    </div>
-                </div>
+    <main>
+      <!-- Journaling Section -->
+      <section class="journal-section">
+        <h2>📝 Today's Reflection</h2>
+        <textarea id="journalEntry" placeholder="How are you feeling today? Write freely..."></textarea>
+        <button id="saveJournalBtn">Save Entry</button>
+        <p id="sentimentFeedback"></p>
+      </section>
+    </main>
 
-                <div class="sentiment-display" id="sentimentDisplay">
-                    <!-- Sentiment indicators will be shown here -->
-                </div>
+    <footer>
+      <p>ZenAI is here to support you 24/7. While I’m here to help, I’m not a replacement for professional mental health support.</p>
+    </footer>
+  </div>
 
-                <div class="input-container">
-                    <textarea 
-                        id="userInput" 
-                        placeholder="Share your thoughts here..."
-                        aria-label="Type your message"
-                        rows="3"></textarea>
-                    <button id="sendButton" aria-label="Send message">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="journal-container">
-                <h2>Mindful Journal</h2>
-                <textarea 
-                    id="journalEntry" 
-                    placeholder="Take a moment to reflect on your day..."
-                    aria-label="Journal entry"
-                    rows="6"></textarea>
-                <button id="saveJournalBtn" class="btn-primary">Save Entry</button>
-            </div>
-        </main>
-
-        <footer>
-            <p>ZenAI is here to support you 24/7. Remember, while I'm here to help, I'm not a replacement for professional mental health support.</p>
-        </footer>
-    </div>
-
-    <script src="js/app.js"></script>
+  <!-- App Script (sentiment detection) -->
+  <script src="app.js"></script>
 </body>
 </html>
