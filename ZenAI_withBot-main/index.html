@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenAI – Mindful Journaling Companion</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Botpress Webchat Scripts (Auto Embed) -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/03/17/20250703173453-822WBGRY.js" defer></script>
+</head>
+<body>
+  <div class="zen-container">
+    <header>
+      <h1>ZenAI</h1>
+      <p class="subtitle">Your mindful companion for emotional well-being</p>
+    </header>
+
+    <main>
+      <!-- Journaling Section -->
+      <section class="journal-section">
+        <h2>📝 Today's Reflection</h2>
+        <textarea id="journalEntry" placeholder="How are you feeling today? Write freely..."></textarea>
+        <button id="saveJournalBtn">Save Entry</button>
+        <p id="sentimentFeedback"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>ZenAI is here to support you 24/7. While I’m here to help, I’m not a replacement for professional mental health support.</p>
+    </footer>
+  </div>
+
+  <!-- App Script (sentiment detection) -->
+  <script src="app.js"></script>
+</body>
+</html>

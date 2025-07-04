@@ -1,0 +1,97 @@
+/* Zen-inspired styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f5fafb;
+  color: #333;
+}
+
+.zen-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #406882;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #648a92;
+}
+
+h2 {
+  color: #406882;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.journal-section,
+.chat-section {
+  margin-bottom: 3rem;
+  background-color: #f1f8f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #dceeee;
+}
+
+textarea#journalEntry {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  border: 1px solid #c3dcdc;
+  border-radius: 8px;
+  resize: none;
+  background-color: #fdfefe;
+}
+
+button#saveJournalBtn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #7DA2A9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+button#saveJournalBtn:hover {
+  background-color: #5b848a;
+}
+
+#sentimentFeedback {
+  margin-top: 0.8rem;
+  font-style: italic;
+  color: #4c7273;
+}
+
+#webchat {
+  width: 100%;
+  height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #6c7a7a;
+  font-size: 0.85rem;
+}
