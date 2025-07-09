@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,14 +8,13 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Botpress Webchat Scripts (Auto Embed) -->
+  <!-- Botpress Webchat Embed -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js" defer></script>
   <script src="https://files.bpcontent.cloud/2025/07/03/17/20250703173453-822WBGRY.js" defer></script>
 </head>
+
 <body>
   <div class="zen-container">
     <header>
@@ -23,12 +23,19 @@
     </header>
 
     <main>
-      <!-- Journaling Section -->
+      <!-- Journal Input -->
       <section class="journal-section">
         <h2>📝 Today's Reflection</h2>
         <textarea id="journalEntry" placeholder="How are you feeling today? Write freely..."></textarea>
         <button id="saveJournalBtn">Save Entry</button>
         <p id="sentimentFeedback"></p>
+      </section>
+
+      <!-- Merged Search & History Section -->
+      <section class="history-section">
+        <h2>📂 Past Journal Entries</h2>
+        <input type="text" id="searchInput" placeholder="Search by keyword or sentiment..." />
+        <div id="journalHistory"></div>
       </section>
     </main>
 
@@ -37,7 +44,7 @@
     </footer>
   </div>
 
-  <!-- App Script (sentiment detection) -->
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>

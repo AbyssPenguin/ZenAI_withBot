@@ -8,7 +8,7 @@ body {
 }
 
 .zen-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   background-color: #ffffff;
@@ -39,7 +39,8 @@ h2 {
 }
 
 .journal-section,
-.chat-section {
+.chat-section,
+.history-section {
   margin-bottom: 3rem;
   background-color: #f1f8f9;
   padding: 1.5rem;
@@ -47,6 +48,7 @@ h2 {
   border: 1px solid #dceeee;
 }
 
+/* Textarea */
 textarea#journalEntry {
   width: 100%;
   height: 150px;
@@ -59,6 +61,7 @@ textarea#journalEntry {
   background-color: #fdfefe;
 }
 
+/* Save Button */
 button#saveJournalBtn {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
@@ -75,18 +78,56 @@ button#saveJournalBtn:hover {
   background-color: #5b848a;
 }
 
+/* Feedback Message */
 #sentimentFeedback {
   margin-top: 0.8rem;
   font-style: italic;
   color: #4c7273;
 }
 
-#webchat {
+/* Search Input inside History Section */
+.history-section input {
   width: 100%;
-  height: 520px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #c3dcdc;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* History Entry Box */
+.history-entry {
+  background: #fff;
+  border: 1px solid #dceeee;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-entry span {
+  display: block;
+  font-size: 0.95rem;
+  color: #406882;
+}
+
+.history-entry small {
+  color: #648a92;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #e85c5c;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
 }
 
 /* Footer */
