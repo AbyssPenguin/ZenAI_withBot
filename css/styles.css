@@ -3,7 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  background-color: #f2f8fd; /* very soft blue */
+  background: url('../Zen.png') no-repeat center center fixed, #f2f8fd;
+  background-size: cover;
   color: #1e2d3a; /* dark navy-gray */
 }
 

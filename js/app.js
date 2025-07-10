@@ -12,14 +12,25 @@ document.getElementById("saveJournalBtn").addEventListener("click", async () => 
 
   try {
     const sentiment = await getSentiment(entry);
+
+    // Escalation logic based on critical phrases
+    const crisisPhrases = ["suicidal", "end my life", "kill myself", "worthless", "i want to die", "give up"];
+    const isCritical = crisisPhrases.some(p => entry.toLowerCase().includes(p));
+
     const message = {
       Positive: "You seem to be feeling good today 💛 Keep nurturing that energy.",
       Neutral: "A neutral tone can be a moment of balance 🪷 Want to reflect deeper?",
       Negative: "I'm sensing some heaviness 💙 It's okay to feel this way. I'm here to support you."
     }[sentiment] || "Thank you for sharing. Let's reflect further together.";
 
-    feedback.textContent = message;
+    // Override if critical content is found
+    if (isCritical) {
+      feedback.innerHTML = `⚠️ I'm really concerned about your well-being.<br>Please consider reaching out for support:<br><a href="https://sos.org.sg" target="_blank">💜 SOS Singapore – 24/7 Helpline</a>`;
+    } else {
+      feedback.textContent = message;
+    }
 
+    // Save the entry
     const timestamp = new Date().toISOString();
     const record = { entry, sentiment };
     localStorage.setItem(`zenJournal_${timestamp}`, JSON.stringify(record));
@@ -33,34 +44,84 @@ document.getElementById("saveJournalBtn").addEventListener("click", async () => 
   }
 });
 
-// Gemini API call
+// Gemini API call with few-shot + fallback
 async function getSentiment(text) {
-  const apiKey = "YOUR_API_KEY_HERE";
+  const apiKey = "YOUR_GEMINI_API_KEY"; // Replace with your key
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
 
   const body = {
     contents: [
       {
+        role: "user",
         parts: [
           {
-            text: `Classify the emotional tone of this journal entry as: Positive, Neutral, or Negative.\n\nJournal entry:\n${text}\n\nRespond with only one word: Positive, Neutral, or Negative.`
+            text: `
+You are a sentiment classification bot. Classify the journal entry as either "Positive", "Neutral", or "Negative".
+
+Rules:
+- Your answer must be exactly one word: Positive, Neutral, or Negative.
+- Do not explain your answer.
+- Do not add punctuation.
+- If the user expresses sadness, frustration, hopelessness, or anxiety, label it Negative.
+- If the entry expresses joy, gratitude, peace, or energy, label it Positive.
+- If it is factual, vague, or lacks strong emotional tone, label it Neutral.
+
+Examples:
+- "I feel hopeless." → Negative
+- "My life is sad." → Negative
+- "Everything is okay." → Neutral
+- "Today was okay, nothing special." → Neutral
+- "I am proud of myself." → Positive
+- "So grateful for my friends." → Positive
+- "I'm so tired of everything." → Negative
+- "Just another day." → Neutral
+
+Journal Entry:
+"${text}"
+
+Now classify it. Respond with only one word.
+            `.trim()
           }
         ]
       }
     ]
   };
 
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  });
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
 
-  const data = await res.json();
-  return data?.candidates?.[0]?.content?.parts?.[0]?.text.trim() || "Neutral";
+    const data = await res.json();
+    const response = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+    if (!["Positive", "Neutral", "Negative"].includes(response)) {
+      console.warn("Gemini returned unknown label:", response);
+      return fallbackSentiment(text);
+    }
+
+    return response;
+  } catch (err) {
+    console.error("Gemini API failed, falling back:", err);
+    return fallbackSentiment(text);
+  }
 }
 
-// Display journal history
+// Fallback rule-based sentiment classifier
+function fallbackSentiment(text) {
+  const lowered = text.toLowerCase();
+
+  const negativeWords = ["sad", "tired", "hopeless", "angry", "frustrated", "depressed", "lonely", "worthless"];
+  const positiveWords = ["happy", "grateful", "proud", "joyful", "excited", "peaceful", "calm", "content"];
+
+  if (negativeWords.some(word => lowered.includes(word))) return "Negative";
+  if (positiveWords.some(word => lowered.includes(word))) return "Positive";
+  return "Neutral";
+}
+
+// Display journal entries with filtering
 function displayJournalEntries(filter = "") {
   const container = document.getElementById("journalHistory");
   container.innerHTML = "";
@@ -90,6 +151,7 @@ function displayJournalEntries(filter = "") {
     container.appendChild(div);
   });
 
+  // Attach delete listeners
   document.querySelectorAll(".delete-btn").forEach(btn =>
     btn.addEventListener("click", () => {
       const key = btn.getAttribute("data-key");
@@ -99,7 +161,7 @@ function displayJournalEntries(filter = "") {
   );
 }
 
-// Search input listener
+// Filter as you type
 document.getElementById("searchInput").addEventListener("input", (e) => {
   displayJournalEntries(e.target.value);
 });
