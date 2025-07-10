@@ -46,7 +46,7 @@ document.getElementById("saveJournalBtn").addEventListener("click", async () => 
 
 // Gemini API call with few-shot + fallback
 async function getSentiment(text) {
-  const apiKey = "YOUR_GEMINI_API_KEY"; // Replace with your key
+  const apiKey = "AIzaSyDjTZX9Oq2EoR17031gcLr3AC7AbANvwss"; // Replace with your key
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
 
   const body = {
