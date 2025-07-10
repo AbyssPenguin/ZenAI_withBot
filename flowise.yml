@@ -1,0 +1,26 @@
+name: Flowise Daily Backup
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:     # Allows manual trigger
+
+jobs:
+  backup-flows:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add flows/
+          git commit -m "Automated backup of Flowise flows on $(date)"
+          git push
+        continue-on-error: true  # Avoid failure if no changes
