@@ -1,10 +1,10 @@
-/* Zen-inspired styling */
+/* ZenAI Blue Theme Styling */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  background-color: #f5fafb;
-  color: #333;
+  background-color: #f2f8fd; /* very soft blue */
+  color: #1e2d3a; /* dark navy-gray */
 }
 
 .zen-container {
@@ -13,27 +13,41 @@ body {
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 50, 100, 0.08);
 }
 
+/* Updated header with blue gradient and styling */
 header {
   text-align: center;
   margin-bottom: 2rem;
+  padding: 1rem 0;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #406882;
+  font-size: 3rem;
+  color: #fff;
   margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+  user-select: none;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: #648a92;
+  font-size: 1.25rem;
+  color: #d0e4ff;
+  margin-top: 0.4rem;
+  font-weight: 500;
+  font-style: italic;
 }
 
 h2 {
-  color: #406882;
+  color: #204e8a;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -42,10 +56,10 @@ h2 {
 .chat-section,
 .history-section {
   margin-bottom: 3rem;
-  background-color: #f1f8f9;
+  background-color: #eaf4fd; /* soft blue background */
   padding: 1.5rem;
   border-radius: 10px;
-  border: 1px solid #dceeee;
+  border: 1px solid #cce3f5;
 }
 
 /* Textarea */
@@ -55,34 +69,34 @@ textarea#journalEntry {
   padding: 1rem;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  border: 1px solid #c3dcdc;
+  border: 1px solid #b2cbe0;
   border-radius: 8px;
   resize: none;
-  background-color: #fdfefe;
+  background-color: #ffffff;
 }
 
 /* Save Button */
 button#saveJournalBtn {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: #7DA2A9;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: background 0.3s ease-in-out;
 }
 
 button#saveJournalBtn:hover {
-  background-color: #5b848a;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
 }
 
 /* Feedback Message */
 #sentimentFeedback {
   margin-top: 0.8rem;
   font-style: italic;
-  color: #4c7273;
+  color: #2563eb;
 }
 
 /* Search Input inside History Section */
@@ -91,19 +105,19 @@ button#saveJournalBtn:hover {
   padding: 0.8rem;
   font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid #c3dcdc;
+  border: 1px solid #b2cbe0;
   margin-bottom: 1.5rem;
   box-sizing: border-box;
 }
 
 /* History Entry Box */
 .history-entry {
-  background: #fff;
-  border: 1px solid #dceeee;
+  background: #ffffff;
+  border: 1px solid #dbe9f5;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,7 +126,7 @@ button#saveJournalBtn:hover {
 .history-entry span {
   display: block;
   font-size: 0.95rem;
-  color: #406882;
+  color: #204e8a;
 }
 
 .history-entry small {
@@ -121,13 +135,18 @@ button#saveJournalBtn:hover {
 
 /* Delete Button */
 .delete-btn {
-  background: #e85c5c;
+  background: #ef4444;
   color: white;
   border: none;
   padding: 0.3rem 0.7rem;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.8rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
 }
 
 /* Footer */
@@ -135,4 +154,5 @@ footer {
   text-align: center;
   color: #6c7a7a;
   font-size: 0.85rem;
+  margin-top: 2rem;
 }
